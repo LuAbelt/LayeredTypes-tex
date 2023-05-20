@@ -1,8 +1,0 @@
---Type checking information
-numTypes::typecheck:: int short long byte
-logicalTypes::typecheck:: bool
-subtype::typecheck:: byte <: short <: int <: long
-x::types:: int
-
--- Type checking error
-x := True

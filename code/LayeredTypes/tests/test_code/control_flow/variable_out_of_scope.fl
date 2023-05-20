@@ -1,5 +1,0 @@
-global := 42
-
-fun x {
-    global
-}

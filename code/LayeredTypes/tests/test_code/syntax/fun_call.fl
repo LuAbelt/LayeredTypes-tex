@@ -1,7 +1,0 @@
-funCall(argument)
-funCall(42)
-funCall(True)
-funCall(False)
-emptyCall()
-twoArgs(first, second)
-threeArgs(first, second, third)

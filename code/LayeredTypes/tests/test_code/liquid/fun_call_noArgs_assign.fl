@@ -1,6 +1,0 @@
-noArgs :: liquid :: -> {x:Int | x == 1}
-x :: liquid :: {x:Int | x >= 1}
-
-let x := noArgs() in {
-    x
-}

@@ -1,5 +1,0 @@
-x :: liquid :: {v:Int | v>10}
-
-let x := 3 * 4 in {
-    x
-}

@@ -1,8 +1,0 @@
-cond::types:: bool
-logicalTypes::typecheck:: bool
-
-cond := True
-
-if cond then {
-    42
-}

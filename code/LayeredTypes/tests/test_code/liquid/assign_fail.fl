@@ -1,4 +1,0 @@
-x :: liquid :: {x:Int | true }
-
--- This should fail since we do not support normal assignments
-x := 0

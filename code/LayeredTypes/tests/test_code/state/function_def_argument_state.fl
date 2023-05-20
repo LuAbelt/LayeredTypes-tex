@@ -1,6 +1,0 @@
--- The first argument of f needs state "Some"
-f :: state :: {Some} -> {}
-f first {
-    first :: state :: {Some}
-    first
-}

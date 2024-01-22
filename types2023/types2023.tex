@@ -126,11 +126,11 @@ Some of these type systems can be dependent or independent from each other. Both
 
 Given this plethora of type systems, different applications require a different subset of type systems. Not all applications require these advanced type systems (e.g., fully dependent types), trading off static guarantees for (even if short-term) productivity. Untyped languages have been popular in both web applications, scripting and data science. On the other hand, if you are writing a device driver, you will probably want to take advantage of a type system that guarantees that memory usage is constrained to a given bound~\cite{liquidate-assets}. Or if you are writing a complex, distributed protocol, you might want to take advantage of Session Types for that part of the program.
 
-In this talk, we try to address the challenge of how can multiple type system co-exist in the same programming language, allowing different, valid combinations to be used in the type-checking of a program.
+In this talk, we try to address the challenge of how multiple type systems can co-exist in the same programming language, allowing different, valid combinations to be used in the type-checking of a program.
  
  % Alcides is here
  
- To illustrate this in a small example, consider the program in \Cref{lst:code_before} that reads the text contents of a file and prints it to the console line-by-line. In this short snippet, there are multiple concerns to be addressed. Firstly, one wants to ensure that all function calls are done with variables of the appropriate data types. Secondly, to avoid errors due to an out of bound access, \texttt{get} should only be called with an index that does not exceed the list length. Lastly, when working with resources such as a file descriptor it might be useful to track it's state and ensure that it is in a proper (closed) state at the end of program execution. Note that the same standard library functions (\lstinline|createFD|, \lstinline|readLines|, etc...) may be needed in other programs with different type systems requirements.
+ To illustrate this in a small example, consider the program in \Cref{lst:code_before} that reads the text contents of a file and prints it to the console line-by-line. In this short snippet, there are multiple concerns to be addressed. Firstly, one wants to ensure that all function calls are performed with variables of the appropriate data types. Secondly, to avoid errors due to an out of bound access, \texttt{get} should only be called with an index that does not exceed the list length. Lastly, when working with resources such as a file descriptor it might be useful to track its state and ensure that it is in a proper (closed) state at the end of program execution. Note that the same standard library functions (\lstinline|createFD|, \lstinline|readLines|, etc...) may be needed in other programs with different type systems requirements.
  
 %\begin{itemize}
 %	\item From a type-safety perspective, one wants to make sure that e.g. \texttt{get(...)} is only called with a list and an integer index as arguments
@@ -200,7 +200,7 @@ fileDescriptor :: state :: {Closed}
 \section{Proposed Approach}
 \label{sec:proposed-approach}
 
-We propose a second, more principled alternative: \LayeredTypes. In \LayeredTypes, developers can write programs, but can also define additional type systems as layers. Each layer defines the basic types, and how typechecking happens. Additionally, a layer may depend on another layer if it requires information (such as types or typing contexts) from another layer.
+We propose a second, more principled alternative: \LayeredTypes. In \LayeredTypes\cite{LayeredTypes}, developers can write programs, but can also define additional type systems as layers. Each layer defines the basic types, and how typechecking happens. Additionally, a layer may depend on another layer if it requires information (such as types or typing contexts) from another layer.
 
 Type checking of programs can be partial in the sense that a program may only use some layers (even if the libraries used are defined in more layers), requiring only that each function contains type information for that layer and all dependencies. The missing layers can be added over time, if they are found to be relevant.
 
